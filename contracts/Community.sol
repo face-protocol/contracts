@@ -134,6 +134,9 @@ contract Community is ERC721Upgradeable, ICommunity {
 
     /// @notice Function used to apply to community
     function applyForMembership(string calldata dataURI) external payable {
+        // Check that sender isn't a member already
+        require(balanceOf(msg.sender) == 0, "Community: already a member");
+
         // Check that sender hasn't yet applied
         require(
             applications[msg.sender].blockNumber == 0,
@@ -162,9 +165,9 @@ contract Community is ERC721Upgradeable, ICommunity {
     }
 
     /// @notice Function for community members to approve acceptance of new member to community
-    function approve(address applicant) external onlyMember {
+    function approveMembership(address applicant) external onlyMember {
         // Check that applicant isn't a member already
-        require(balanceOf(applicant) > 0, "Community: already a member");
+        require(balanceOf(applicant) == 0, "Community: already a member");
 
         // Check that applicant exists
         uint256 applicationBlock = applications[applicant].blockNumber;
@@ -201,7 +204,7 @@ contract Community is ERC721Upgradeable, ICommunity {
     /// @notice Function called by new member to start membership after successful vote
     function startMembership() external {
         // Check that applicant isn't a member already
-        require(balanceOf(msg.sender) > 0, "Community: already a member");
+        require(balanceOf(msg.sender) == 0, "Community: already a member");
 
         // Check that application is successful
         require(

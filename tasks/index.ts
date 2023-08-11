@@ -1,1 +1,1 @@
-import "./Sample.deploy";
+import "./CommunityFactory.deploy";

@@ -42,7 +42,7 @@ contract CommunityFactory is Ownable, ICommunityFactory {
     ) external payable {
         // Instantiate and initialize community
         address community = communityImplementation.clone();
-        ICommunity(community).initialize(info);
+        ICommunity(community).initialize{value: msg.value}(info);
 
         // Emit event
         emit NewCommunity(community);

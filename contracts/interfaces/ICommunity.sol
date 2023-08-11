@@ -25,7 +25,7 @@ interface ICommunity is IERC721Upgradeable {
     function applyForMembership(string calldata dataURI) external payable;
 
     /// @notice Function for community members to approve acceptance of new member to community
-    function approve(address applicant) external;
+    function approveMembership(address applicant) external;
 
     /// @notice Function called by new member to start membership after successful vote
     function startMembership() external;
