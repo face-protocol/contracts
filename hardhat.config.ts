@@ -54,21 +54,9 @@ const config: HardhatUserConfig = {
                   }
                 : undefined,
         },
-        mainnet: networkConfig(
-            `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-            process.env.ETHSCAN_API_KEY
-        ),
-        goerli: networkConfig(
-            `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-            process.env.ETHSCAN_API_KEY
-        ),
-        mumbai: networkConfig(
-            `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-            process.env.POLYGONSCAN_API_KEY
-        ),
-        polygon: networkConfig(
-            `https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-            process.env.POLYGONSCAN_API_KEY
+        opGoerli: networkConfig(
+            "https://goerli.optimism.io",
+            process.env.OPTISCAN_API_KEY
         ),
     },
     gasReporter: {
@@ -80,19 +68,13 @@ const config: HardhatUserConfig = {
         runOnCompile: true,
     },
     etherscan: {
-        apiKey: {
-            mainnet: process.env.ETHSCAN_API_KEY || "",
-            goerli: process.env.ETHSCAN_API_KEY || "",
-            polygon: process.env.POLYGONSCAN_API_KEY || "",
-            mumbai: process.env.POLYGONSCAN_API_KEY || "",
-        },
         customChains: [
             {
-                network: "mumbai",
-                chainId: 80001,
+                network: "opGoerli",
+                chainId: 420,
                 urls: {
-                    apiURL: "https://api-testnet.polygonscan.com/api",
-                    browserURL: "https://mumbai.polygonscan.com/",
+                    apiURL: "https://goerli-explorer.optimism.io/api",
+                    browserURL: "https://goerli-explorer.optimism.io/",
                 },
             },
         ],
