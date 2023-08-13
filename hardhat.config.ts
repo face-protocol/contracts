@@ -58,6 +58,18 @@ const config: HardhatUserConfig = {
             "https://goerli.optimism.io",
             process.env.OPTISCAN_API_KEY
         ),
+        baseGoerli: networkConfig(
+            "https://goerli.base.org",
+            process.env.BASESCAN_API_KEY
+        ),
+        zoraGoerli: networkConfig(
+            "https://testnet.rpc.zora.energy",
+            process.env.ZORASCAN_API_KEY
+        ),
+        modeSepolia: networkConfig(
+            "https://sepolia.mode.network/",
+            process.env.MODESCAN_API_KEY
+        ),
     },
     gasReporter: {
         enabled: process.env.REPORT_GAS !== undefined,
@@ -75,6 +87,30 @@ const config: HardhatUserConfig = {
                 urls: {
                     apiURL: "https://goerli-explorer.optimism.io/api",
                     browserURL: "https://goerli-explorer.optimism.io/",
+                },
+            },
+            {
+                network: "baseGoerli",
+                chainId: 84531,
+                urls: {
+                    apiURL: "https://goerli.basescan.org/api",
+                    browserURL: "https://goerli.basescan.org/",
+                },
+            },
+            {
+                network: "zoraGoerli",
+                chainId: 999,
+                urls: {
+                    apiURL: "https://testnet.explorer.zora.energy/api",
+                    browserURL: "https://testnet.explorer.zora.energy/",
+                },
+            },
+            {
+                network: "modeSepolia",
+                chainId: 919,
+                urls: {
+                    apiURL: "https://sepolia.explorer.mode.network/api",
+                    browserURL: "https://sepolia.explorer.mode.network/",
                 },
             },
         ],
