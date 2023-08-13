@@ -1,0 +1,8 @@
+{
+  "optimism-goerli": {
+    "CommunityFactory": {
+      "address": "0x963a68D8a57E8E863Cd4E6411B7321988280465f",
+      "startBlock": 13170532
+    }
+  }
+}

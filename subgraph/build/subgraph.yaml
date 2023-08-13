@@ -1,0 +1,46 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CommunityFactory
+    network: optimism-goerli
+    source:
+      address: "0x963a68D8a57E8E863Cd4E6411B7321988280465f"
+      abi: CommunityFactory
+      startBlock: 13170532
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Community
+      abis:
+        - name: CommunityFactory
+          file: CommunityFactory/abis/CommunityFactory.json
+      eventHandlers:
+        - event: NewCommunity(address)
+          handler: handleNewCommunity
+      file: CommunityFactory/CommunityFactory.wasm
+templates:
+  - kind: ethereum/contract
+    name: Community
+    network: optimism-goerli
+    source:
+      abi: Community
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: templates/Community/Community.wasm
+      entities:
+        - Community
+        - CommunityMember
+      abis:
+        - name: Community
+          file: Community/abis/Community.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: NewMembership(address,uint256)
+          handler: handleNewMembership

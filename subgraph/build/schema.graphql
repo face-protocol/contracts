@@ -1,0 +1,15 @@
+type Community @entity {
+  id: Bytes! # address
+  name: String
+  symbol: String
+  rulesURI: String
+  members: [CommunityMember!]! @derivedFrom(field: "community")
+}
+
+type CommunityMember @entity {
+  id: Bytes!
+  community: Community!
+  member: Bytes! #address
+  tokenId: BigInt!
+  dataURI: String!
+}
