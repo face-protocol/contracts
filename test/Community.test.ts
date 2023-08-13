@@ -1,13 +1,11 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
-import { BigNumberish } from "ethers";
-import { deployments, ethers, network, run } from "hardhat";
+import { deployments, ethers, network } from "hardhat";
 
 import { Community, CommunityFactory } from "../typechain-types";
 import { expectEvent, mineBlock } from "./shared/utils";
 
 const { getContract, getContractAt, getSigners } = ethers;
-const { MaxUint256 } = ethers.constants;
 const { parseUnits } = ethers.utils;
 
 describe("Test Community", function () {

@@ -14,12 +14,17 @@ import "./tasks";
 
 dotenv.config();
 
-const networkConfig = (url: string | null | undefined, verifyKey?: string) => ({
+const networkConfig = (
+    url: string | null | undefined,
+    verifyUrl?: string,
+    verifyKey?: string
+) => ({
     url: url || "",
     accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     verify: {
         etherscan: {
+            apiUrl: verifyUrl ?? "",
             apiKey: verifyKey ?? "",
         },
     },
@@ -56,11 +61,13 @@ const config: HardhatUserConfig = {
         },
         opGoerli: networkConfig(
             "https://goerli.optimism.io",
+            undefined,
             process.env.OPTISCAN_API_KEY
         ),
         baseGoerli: networkConfig(
             "https://goerli.base.org",
-            process.env.BASESCAN_API_KEY
+            "https://api-goerli.basescan.org",
+            process.env.BASESCAN_API_KEY!
         ),
         zoraGoerli: networkConfig(
             "https://testnet.rpc.zora.energy",
@@ -93,7 +100,7 @@ const config: HardhatUserConfig = {
                 network: "baseGoerli",
                 chainId: 84531,
                 urls: {
-                    apiURL: "https://goerli.basescan.org/api",
+                    apiURL: "https://api-goerli.basescan.org/api",
                     browserURL: "https://goerli.basescan.org/",
                 },
             },
