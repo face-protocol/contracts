@@ -42,13 +42,14 @@ npx hardhat --network [your network name] deploy
 
 ## Deployments
 
-Contracts are currently deployed to Optimism Goerli, Base Goerli and Zora Goerli testnets. Addresses are below:
+Contracts are currently deployed to Optimism Goerli, Base Goerli, Zora Goerli and Mode Sepolia testnets. Addresses are below:
 
 | Network  | Community Factory                          | Community Implementation                   |
 | -------- | ------------------------------------------ | ------------------------------------------ |
 | Optimism | 0x7E51bd255C405CB65855aC25dd578EC922501211 | 0x5D3EE2a6943B7e07120ac33dd5849074181be044 |
 | Base     | 0x963a68D8a57E8E863Cd4E6411B7321988280465f | 0x8176E84744FaFD7f3a9b497339563D8F55829ffb |
 | Zora     | 0x963a68D8a57E8E863Cd4E6411B7321988280465f | 0x8176E84744FaFD7f3a9b497339563D8F55829ffb |
+| Mode     | 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 | 0x5FbDB2315678afecb367f032d93F642f64180aa3 |
 
 ## Subgraphs
 

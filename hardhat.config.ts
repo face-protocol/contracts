@@ -74,7 +74,7 @@ const config: HardhatUserConfig = {
             process.env.ZORASCAN_API_KEY
         ),
         modeSepolia: networkConfig(
-            "https://sepolia.mode.network",
+            "https://mode-testnet.rpc.thirdweb.com",
             process.env.MODESCAN_API_KEY
         ),
     },
