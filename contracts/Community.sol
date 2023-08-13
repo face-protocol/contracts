@@ -109,9 +109,16 @@ contract Community is ERC721Upgradeable, ICommunity {
         );
 
         // Create initial memberships
+        require(
+            info.initialMembers.length == info.initialMembersDatas.length,
+            "Community: length mismatch"
+        );
         for (uint256 i = 0; i < info.initialMembers.length; i++) {
-            // Accrue deposit
+            // Set datas
             address member = info.initialMembers[i];
+            applications[member].dataURI = info.initialMembersDatas[i];
+
+            // Accrue deposit
             unusedDepositOf[member] += info.membershipDeposit - fee;
 
             // Mint SBT

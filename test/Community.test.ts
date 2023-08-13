@@ -33,6 +33,7 @@ describe("Test Community", function () {
                 membershipVotesThreshold: 300,
                 votingDuration: 30,
                 initialMembers: [owner.address, other.address],
+                initialMembersDatas: ["data1", "data2"],
             },
             { value: parseUnits("0.2") }
         );
@@ -80,6 +81,13 @@ describe("Test Community", function () {
         );
         expect(await community.reputationOf(other.address)).to.equal(
             parseUnits("0.07")
+        );
+
+        expect((await community.applications(owner.address)).dataURI).to.equal(
+            "data1"
+        );
+        expect((await community.applications(other.address)).dataURI).to.equal(
+            "data2"
         );
     });
 

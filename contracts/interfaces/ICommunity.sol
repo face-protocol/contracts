@@ -15,6 +15,7 @@ interface ICommunity is IERC721Upgradeable {
         uint256 membershipVotesThreshold;
         uint256 votingDuration;
         address[] initialMembers;
+        string[] initialMembersDatas;
     }
 
     function initialize(CommunityInfo calldata info) external payable;
