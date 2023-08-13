@@ -70,11 +70,11 @@ const config: HardhatUserConfig = {
             process.env.BASESCAN_API_KEY!
         ),
         zoraGoerli: networkConfig(
-            "https://testnet.rpc.zora.energy",
+            "https://zora-testnet.rpc.thirdweb.com",
             process.env.ZORASCAN_API_KEY
         ),
         modeSepolia: networkConfig(
-            "https://sepolia.mode.network/",
+            "https://https://mode-testnet.rpc.thirdweb.com",
             process.env.MODESCAN_API_KEY
         ),
     },
